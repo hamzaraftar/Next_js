@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Add_blog from "./pages/Add_blog";
 
+
 function App() {
   return (
     <>
@@ -12,7 +13,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/add-blog" element={<Add_blog />} />
-        </Routes>
+        </Routes>        
       </div>
     </>
   );

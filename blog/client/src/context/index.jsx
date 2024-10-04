@@ -7,7 +7,6 @@ export default function GlobalState({ children }) {
     description: "",
   });
   const [blogList, setBlogList] = useState([]);
-
   async function handleSubmit() {
     try {
       const res = await axios.post(
@@ -30,15 +29,17 @@ export default function GlobalState({ children }) {
     const res = await axios.get("http://localhost:5000/api/get");
     const data = await res;
     setBlogList(data.data);
-  }  
+  }
+
+  
   return (
     <GlobalContext.Provider
       value={{
         formData,
         setFormData,
         handleSubmit,
-        blogList,        
-        fetchListOfPost,
+        blogList,
+        fetchListOfPost,        
       }}
     >
       {children}
