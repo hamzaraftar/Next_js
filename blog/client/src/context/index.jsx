@@ -30,8 +30,20 @@ export default function GlobalState({ children }) {
     const data = await res;
     setBlogList(data.data);
   }
+  async function handkeDeleteBlog(id) {
+    try {
+      const deletePost = await axios.delete(
+        `http://localhost:5000/api/delete/${id}`
+      );
+      const result = await deletePost.data;
+      if (result) {
+        fetchListOfPost();
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
 
-  
   return (
     <GlobalContext.Provider
       value={{
@@ -39,7 +51,8 @@ export default function GlobalState({ children }) {
         setFormData,
         handleSubmit,
         blogList,
-        fetchListOfPost,        
+        fetchListOfPost,
+        handkeDeleteBlog,
       }}
     >
       {children}
